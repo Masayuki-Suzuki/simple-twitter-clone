@@ -52,7 +52,7 @@ const sidebarOptions: SidebarOptionsType[] = [
 ]
 const Sidebar = () => {
     return (
-        <div className="sidebar flex flex-col items-end relative flex-grow flex-shrink-0 z-10">
+        <div className="sidebar flex flex-col items-end relative flex-grow flex-shrink-0 py-0.5 z-10">
             <div className="sidebar__wrapper flex flex-col flex-shrink-0 relative ">
                 <div className="sidebar__container fixed top-0 h-full flex flex-col justify-between flex-shrink-0 px-2">
                     <nav className="sidebar__menu flex-start">
