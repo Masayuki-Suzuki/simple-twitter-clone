@@ -1,0 +1,41 @@
+$icon-size: 26.5px
+
+.sidebar
+    height: 100vh
+
+    &__wrapper
+        width: 275px
+
+    &__container
+        width: 275px
+
+    &__item
+        border-radius: 50px
+        font-size: 32px
+        width: 100%
+        transition: background-color 0.3s ease
+
+        @media (hover: hover)
+            &:hover
+                background: $twitter-light-blue
+
+        &-label
+            font-size: 20px
+
+    &__icon
+        text-align: center
+        min-width: $icon-size
+
+
+    &__tweet-btn
+        @apply w-full
+
+        background: $twitter-blue !important
+        border-radius: 50px !important
+        font-size: 17px !important
+        font-weight: 700 !important
+        min-height: 52px
+        text-transform: capitalize !important
+        width: 90%
+
+
