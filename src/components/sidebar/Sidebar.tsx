@@ -53,16 +53,16 @@ const sidebarOptions: SidebarOptionsType[] = [
 const Sidebar = () => {
     return (
         <div className="sidebar flex flex-col items-end relative flex-grow flex-shrink-0 py-0.5 z-10">
-            <div className="sidebar__wrapper flex flex-col flex-shrink-0 relative ">
-                <div className="sidebar__container fixed top-0 h-full flex flex-col justify-between flex-shrink-0 px-2">
+            <div className="sidebar__wrapper flex flex-col flex-shrink-0 relative">
+                <div className="sidebar__container fixed top-0 h-full flex flex-col justify-between flex-shrink-0 px-2 pt-2">
                     <nav className="sidebar__menu flex-start">
-                        <div className="sidebar__item flex items-center leading-none capitalize px-3">
+                        <div className="sidebar__item sidebar__item--tw flex items-center justify-center leading-none p-0">
                             <span className="sidebar__icon">
                                 <TwitterIcon fontSize="inherit" className="sidebar__twitter-icon text-tw-blue"/>
                             </span>
                         </div>
                         {sidebarOptions.map(item => (
-                            <SidebarOption label={item.label}>
+                            <SidebarOption label={item.label} key={item.label}>
                                 {item.icon}
                             </SidebarOption>
                         ))}

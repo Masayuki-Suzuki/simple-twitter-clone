@@ -1,5 +1,6 @@
 import React from 'react'
 import TweetBox from './TweetBox'
+import Post from './Post'
 
 const TimeLine = () => (
     <div className="timeline border-x border-tw-gray flex-grow">
@@ -10,6 +11,9 @@ const TimeLine = () => (
         </div>
         <div className="timeline__container">
             <TweetBox />
+            <div className="posts">
+                <Post />
+            </div>
         </div>
     </div>
 )
