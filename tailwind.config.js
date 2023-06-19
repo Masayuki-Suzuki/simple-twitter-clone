@@ -2,7 +2,8 @@ const TwitterColours = {
     blue: '#1d9cf0',
     lightBlue: '#e8f8fe',
     background: '#eff3f4',
-    backgroundLite: '#f7f9f9'
+    backgroundLite: '#f7f9f9',
+    darkGray: '#536471'
 }
 
 module.exports = {
@@ -12,7 +13,8 @@ module.exports = {
         colors: {
             'tw-blue': TwitterColours.blue,
             'tw-light-blue': TwitterColours.lightBlue,
-            'tw-bg-lite': TwitterColours.backgroundLite
+            'tw-bg-lite': TwitterColours.backgroundLite,
+            'tw-dark-gray': TwitterColours.darkGray
         },
         backgroundColor: {
             secondary: TwitterColours.background,
@@ -32,6 +34,10 @@ module.exports = {
             'emphasise': ['0.9375rem', {
                 lineHeight: 1.3,
                 fontWeight: 600
+            }],
+            'trend-caption': ['0.8125rem', {
+                lineHeight: 1.3,
+                fontWeight: 400
             }]
         }
     },
