@@ -20,11 +20,6 @@ const TREND_MOCK: TrendHeaderProps[] = [
         title: 'Typescript',
         count: '777K'
     },
-    {
-        caption: 'Trending',
-        title: 'Golang',
-        count: '666K'
-    }
 ]
 
 const getTrendElement = ():React.ReactNode => {
@@ -46,7 +41,7 @@ const TrendWidget = () => (
         <TrendFeature />
         {getTrendElement()}
         <div className="trend-readmore px-3 py-4 hover:bg-gray-200 transition-colors duration-300">
-            <a className="no-underline text-body text-tw-blue" href="#">Show more</a>
+            <a className="no-underline text-body font-medium text-tw-blue" href="#">Show more</a>
         </div>
     </WidgetBox>
 )
