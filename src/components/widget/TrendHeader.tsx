@@ -11,7 +11,7 @@ const TrendHeader = ({caption, title, count}: TrendHeaderProps) => (
         <p className="trend-caption text-trend-caption mb-1">{ caption }</p>
         <h4 className="text-emphasise font-bold">{ title }</h4>
         { count ? (
-            <p className="">{ count } Tweets</p>
+            <p className="trend-caption text-trend-caption mb-1">{ count } Tweets</p>
         ) : null}
     </div>
 )
