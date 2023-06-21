@@ -29,7 +29,7 @@ module.exports = {
         fontSize: {
             'widget-title': ['1.25rem', {
                 lineHeight: 1.2,
-                fontWeight: 700
+                fontWeight: 800
             }],
             'emphasise': ['0.9375rem', {
                 lineHeight: 1.3,
@@ -37,6 +37,10 @@ module.exports = {
             }],
             'trend-caption': ['0.8125rem', {
                 lineHeight: 1.3,
+                fontWeight: 400
+            }],
+            'body': ['0.9375rem', {
+                lineHeight: 1.2,
                 fontWeight: 400
             }]
         }
