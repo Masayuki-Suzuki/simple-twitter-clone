@@ -9,7 +9,7 @@ export type WhoToFollowItemProps = {
 
 const whoToFollowItem = ({userID, userName}:WhoToFollowItemProps) => {
     return (
-        <div className="who-to-follow__item flex items-center justify-between p-3">
+        <div className="who-to-follow__item flex items-center justify-between p-3 hover:bg-gray-200 transition-colors duration-300 cursor-pointer">
             <div className="who-to-follow__avatar">
                 <Avatar />
             </div>
