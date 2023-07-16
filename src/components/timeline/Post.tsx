@@ -18,7 +18,7 @@ const PostDom = ({ userName, isVerified, userId, postedAt, body, imageURL }: Pos
                 <h3 className="post__user-name font-semibold">{userName}</h3>
                 {isVerified ? <Verified className="verified-icon mx-1" fontSize="small"/> : null}
                 <p className="post__user-id text-gray-500">@{userId}</p>
-                <p className="post__date text-gray-500"><span className="px-1.5">·</span>{postedAt}</p>
+                <p className="post__date text-gray-500"><span className="px-1.5">·</span>now</p>
             </div>
             <div className="post__body">
                 <p className="body__text">
