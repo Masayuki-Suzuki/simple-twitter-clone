@@ -29,6 +29,7 @@ const getTrendElement = ():React.ReactNode => {
                 caption={elm.caption}
                 title={elm.title}
                 count={elm.count}
+                key={elm.title}
             />
         ))
     }
