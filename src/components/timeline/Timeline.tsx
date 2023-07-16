@@ -11,6 +11,8 @@ type TimeLineDomProps = {
 }
 
 const getPostElements = (postsData: PostData[]): Nullable<ReactElement[]> => {
+    // Add functionality to get post data from API
+
     if (Array.isArray(postsData) && postsData.length) {
         return postsData.map((elm, index) => (
             <Post

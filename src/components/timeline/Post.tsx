@@ -7,10 +7,6 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined'
 import { PostProps } from '../../types/timeline'
 
-type PostDomProps = {
-    postedAt: string
-} & Omit<PostProps, 'postedAt'>
-
 const PostDom = ({ userName, isVerified, userId, postedAt, body, imageURL }: PostProps) => (
     <div className="post py-4 pl-4 pr-6 border-b border-tw-gray flex">
         <div className="post__avatar pr-3">
