@@ -56,15 +56,18 @@ const Post = (props: PostProps) => {
                 setPostedAt('1d')
             } else if (result.includes('year')) {
                 setPostedAt(format(timeStamp, 'LLL dd, yyyy'))
+            } else {
+                setPostedAt(format(timeStamp, 'LLL dd'))
             }
-
         } else {
             if (result === '0 seconds' || result === '1 seconds') {
                 setPostedAt('now')
             }
-            setPostedAt(result)
+            let formattedPostedAt = result.replace(/\sseconds?/, 's')
+            formattedPostedAt = formattedPostedAt.replace(/\sminutes?/, 'm')
+            formattedPostedAt = formattedPostedAt.replace(/\shours?/, 'h')
+            setPostedAt(formattedPostedAt)
         }
-        console.log(result)
     }
 
     useEffect(() => {

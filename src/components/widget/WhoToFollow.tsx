@@ -20,7 +20,7 @@ const USERS_MOCK: WhoToFollowItemProps[] = [
 const getItemList = () => {
     if(Array.isArray(USERS_MOCK) && USERS_MOCK.length) {
         return USERS_MOCK.map(item => (
-            <WhoToFollowItem userName={item.userName} userID={item.userID} />
+            <WhoToFollowItem userName={item.userName} userID={item.userID} key={item.userID}/>
         ))
     }
     return null
