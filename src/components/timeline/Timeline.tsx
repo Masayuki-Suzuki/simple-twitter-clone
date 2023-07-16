@@ -1,9 +1,9 @@
 import React, { ReactElement, useEffect, useState } from 'react'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 import { db } from '../../firebase'
 import TweetBox from './TweetBox'
 import Post from './Post'
-import { PostData, PostProps } from '../../types/timeline'
+import { PostData } from '../../types/timeline'
 import { Nullable } from '../../types/utilities'
 
 type TimeLineDomProps = {
@@ -48,7 +48,9 @@ const TimeLine = () => {
 
     useEffect(() => {
         const getPostData = async () => {
-            const querySnapshot = await getDocs(collection(db, 'posts'))
+            const collectionData = collection(db, 'posts')
+            const queryData = query(collectionData, orderBy('postedAt', 'desc'))
+            const querySnapshot = await getDocs(queryData)
             const postsData = querySnapshot.docs.map(doc => doc.data() as PostData)
             setPostElements(getPostElements(postsData))
         }

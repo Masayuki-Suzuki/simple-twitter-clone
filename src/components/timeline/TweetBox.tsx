@@ -1,5 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Avatar, Button } from '@mui/material'
+import { collection, addDoc, Timestamp } from 'firebase/firestore'
+import { v4 as uuidv4 } from 'uuid'
+import { db } from '../../firebase'
+import { PostData } from '../../types/timeline'
+import { Nullable } from '../../types/utilities'
 
 type TweetEditorProps = {
     focused: boolean
@@ -40,6 +45,7 @@ const TweetEditor = ({focused, onClickEvent, dummyAreaRef, textAreaRef}: TweetEd
 const TweetBox = () => {
     const [focused, setFocused] = useState(false)
     const [tweet, setTweet] = useState("")
+    const [imageURL, setImageURL] = useState<Nullable<string>>(null)
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
     const dummyAreaRef = useRef<HTMLDivElement>(null)
 
@@ -61,6 +67,28 @@ const TweetBox = () => {
         setFocused(true)
     }
 
+    const sendTweet = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        e.stopPropagation()
+
+        const postTweet = async () => {
+            const postData: PostData = {
+                ID: uuidv4(),
+                userId: 'User_ID_1',
+                userName: 'User Name 1',
+                isVerified: true,
+                body: tweet,
+                postedAt: Timestamp.fromDate(new Date()),
+                imageURL,
+                avatar: ''
+            }
+
+            await addDoc(collection(db, 'posts'), postData)
+        }
+
+        void postTweet()
+    }
+
     return (
         <div className="tweet-box px-4 pt-4 border-b border-tw-gray">
             <form>
@@ -71,9 +99,13 @@ const TweetBox = () => {
                     textAreaRef={textAreaRef}
                 />
                 <div className="tweet-box__image-input flex py-4 pl-12">
-                    <input className="tweet-box__image-input w-full outline-0"
-                           placeholder="Input here the URL of an image."/>
+                    <input
+                        onChange={e => setImageURL(e.target.value)}
+                        className="tweet-box__image-input w-full outline-0"
+                        placeholder="Input here the URL of an image."
+                    />
                     <Button
+                        onClick={sendTweet}
                         size="large"
                         variant="contained"
                         type="submit"

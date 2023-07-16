@@ -12,10 +12,10 @@ type PostDomProps = {
     postedAt: string
 } & Omit<PostProps, 'postedAt'>
 
-const PostDom = ({ userName, isVerified, userId, postedAt, body, imageURL }: PostDomProps) => (
+const PostDom = ({ userName, isVerified, userId, postedAt, body, imageURL, avatar }: PostDomProps) => (
     <div className="post py-4 pl-4 pr-6 border-b border-tw-gray flex">
         <div className="post__avatar pr-3">
-            <Avatar/>
+            <Avatar src={avatar}/>
         </div>
         <div className="post__container w-full">
             <div className="post__header flex items-center mb-2">
@@ -31,7 +31,7 @@ const PostDom = ({ userName, isVerified, userId, postedAt, body, imageURL }: Pos
                 </p>
                 {imageURL ? (
                     <div className="body__image mt-5 overflow-hidden">
-                        <img src={imageURL}/>
+                        <img src={imageURL} alt="" />
                     </div>
                 ) : null}
             </div>

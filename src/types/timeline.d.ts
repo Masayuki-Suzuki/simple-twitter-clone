@@ -9,6 +9,7 @@ export type PostData = {
     postedAt: Timestamp
     body: string
     imageURL: Nullable<string>
+    avatar?: string
 }
 
 export type PostProps = Omit<PostData, 'ID'>
