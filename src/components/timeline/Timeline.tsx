@@ -33,11 +33,11 @@ const TimeLine = () => {
     const [postsData, setPostsData] = useState<PostData[]>([])
 
     useEffect(() => {
-        const getPostData = async () => {
+        const getPostData = () => {
             const collectionData = collection(db, 'posts')
             const queryData = query(collectionData, orderBy('postedAt', 'desc'))
 
-            await onSnapshot(queryData, querySnapshot => {
+            onSnapshot(queryData, querySnapshot => {
                 const posts = querySnapshot.docs.map(doc => doc.data() as PostData)
                 setPostsData(posts)
             })
