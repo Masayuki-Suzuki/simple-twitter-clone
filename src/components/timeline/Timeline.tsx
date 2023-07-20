@@ -33,17 +33,13 @@ const TimeLine = () => {
     const [postsData, setPostsData] = useState<PostData[]>([])
 
     useEffect(() => {
-        const getPostData = () => {
-            const collectionData = collection(db, 'posts')
-            const queryData = query(collectionData, orderBy('postedAt', 'desc'))
+        const collectionData = collection(db, 'posts')
+        const queryData = query(collectionData, orderBy('postedAt', 'desc'))
 
-            onSnapshot(queryData, querySnapshot => {
-                const posts = querySnapshot.docs.map(doc => doc.data() as PostData)
-                setPostsData(posts)
-            })
-        }
-
-        void getPostData()
+        onSnapshot(queryData, querySnapshot => {
+            const posts = querySnapshot.docs.map(doc => doc.data() as PostData)
+            setPostsData(posts)
+        })
     }, [])
 
     return <TimeLineDom postsData={postsData}/>
