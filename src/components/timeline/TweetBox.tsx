@@ -67,6 +67,12 @@ const TweetBox = () => {
         setFocused(true)
     }
 
+    const resetTweetBox = () => {
+        setTweet('')
+        setImageURL(null)
+        setFocused(false)
+    }
+
     const sendTweet = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         e.stopPropagation()
@@ -84,6 +90,7 @@ const TweetBox = () => {
             }
 
             await addDoc(collection(db, 'posts'), postData)
+            resetTweetBox()
         }
 
         void postTweet()

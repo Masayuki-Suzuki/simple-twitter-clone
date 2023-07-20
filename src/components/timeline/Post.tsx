@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, forwardRef, Ref } from 'react'
 import { Avatar } from '@mui/material'
 import Verified from '@mui/icons-material/Verified'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
@@ -12,8 +12,12 @@ type PostDomProps = {
     postedAt: string
 } & Omit<PostProps, 'postedAt'>
 
-const PostDom = ({ userName, isVerified, userId, postedAt, body, imageURL, avatar }: PostDomProps) => (
-    <div className="post py-4 pl-4 pr-6 border-b border-tw-gray flex">
+// @ts-ignore
+const PostDom = forwardRef(
+    ({ userName, isVerified, userId, postedAt, body, imageURL, avatar }: PostDomProps,
+     ref: Ref<HTMLDivElement> | undefined
+    ) => (
+    <div className="post py-4 pl-4 pr-6 border-b border-tw-gray flex" ref={ref}>
         <div className="post__avatar pr-3">
             <Avatar src={avatar}/>
         </div>
@@ -43,9 +47,9 @@ const PostDom = ({ userName, isVerified, userId, postedAt, body, imageURL, avata
             </div>
         </div>
     </div>
-)
+))
 
-const Post = (props: PostProps) => {
+const Post = forwardRef((props: PostProps, ref: Ref<HTMLDivElement> | undefined) => {
     const [postedAt, setPostedAt] = useState('now')
     const postData = {...props, postedAt}
     const getPostedAt = () => {
@@ -75,8 +79,8 @@ const Post = (props: PostProps) => {
     }, [])
 
     return (
-        <PostDom {...postData} />
+        <PostDom {...postData} ref={ref} />
     )
-}
+})
 
 export default Post
