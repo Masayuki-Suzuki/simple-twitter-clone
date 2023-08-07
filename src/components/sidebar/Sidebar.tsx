@@ -14,40 +14,49 @@ import TwitterButton from './TweetButton'
 type SidebarOptionsType = {
     label: string
     icon: React.ReactNode
+    isActive: boolean
 }
 
 const sidebarOptions: SidebarOptionsType[] = [
     {
         label: 'home',
-        icon: <HomeIcon fontSize="inherit" className="sidebar__icon"/>
+        icon: <HomeIcon fontSize="inherit" className="sidebar__icon"/>,
+        isActive: true
     },
     {
         label: 'Explore',
-        icon: <Grid3x3Icon fontSize="inherit" className="sidebar__icon"/>
+        icon: <Grid3x3Icon fontSize="inherit" className="sidebar__icon"/>,
+        isActive: false
     },
     {
         label: 'Notifications',
-        icon: <NotificationsNoneIcon fontSize="inherit" className="sidebar__icon"/>
+        icon: <NotificationsNoneIcon fontSize="inherit" className="sidebar__icon"/>,
+        isActive: false
     },
     {
         label: 'Messages',
-        icon: <MailOutlineIcon fontSize="inherit" className="sidebar__icon"/>
+        icon: <MailOutlineIcon fontSize="inherit" className="sidebar__icon"/>,
+        isActive: false
     },
     {
         label: 'Lists',
-        icon: <ListAltIcon fontSize="inherit" className="sidebar__icon"/>
+        icon: <ListAltIcon fontSize="inherit" className="sidebar__icon"/>,
+        isActive: false
     },
     {
         label: 'Bookmarks',
-        icon: <BookmarkBorderIcon fontSize="inherit" className="sidebar__icon"/>
+        icon: <BookmarkBorderIcon fontSize="inherit" className="sidebar__icon"/>,
+        isActive: false
     },
     {
         label: 'Profile',
-        icon: <PermIdentityIcon fontSize="inherit" className="sidebar__icon"/>
+        icon: <PermIdentityIcon fontSize="inherit" className="sidebar__icon"/>,
+        isActive: false
     },
     {
         label: 'More',
-        icon: <MoreHorizIcon fontSize="inherit" className="sidebar__icon"/>
+        icon: <MoreHorizIcon fontSize="inherit" className="sidebar__icon"/>,
+        isActive: false
     }
 ]
 const Sidebar = () => {
@@ -62,7 +71,7 @@ const Sidebar = () => {
                             </span>
                         </div>
                         {sidebarOptions.map(item => (
-                            <SidebarOption label={item.label} key={item.label}>
+                            <SidebarOption label={item.label} key={item.label} isActive={item.isActive}>
                                 {item.icon}
                             </SidebarOption>
                         ))}

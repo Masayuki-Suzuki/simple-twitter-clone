@@ -50,32 +50,30 @@ const PostDom = forwardRef(
 ))
 
 const Post = forwardRef((props: PostProps, ref: Ref<HTMLDivElement> | undefined) => {
-    const [postedAt, setPostedAt] = useState('now')
-    const postData = {...props, postedAt}
-    const getPostedAt = () => {
-        const timeStamp = props.postedAt.toDate()
-        const result = formatDistanceToNowStrict(timeStamp)
-        if (result.includes('day') || result.includes('month') || result.includes('year') ) {
-            if(result === '1 day') {
-                setPostedAt('1d')
-            } else if (result.includes('year')) {
-                setPostedAt(format(timeStamp, 'LLL dd, yyyy'))
-            } else {
-                setPostedAt(format(timeStamp, 'LLL dd'))
-            }
-        } else {
-            if (result === '0 seconds' || result === '1 seconds') {
-                setPostedAt('now')
-            }
-            let formattedPostedAt = result.replace(/\sseconds?/, 's')
-            formattedPostedAt = formattedPostedAt.replace(/\sminutes?/, 'm')
-            formattedPostedAt = formattedPostedAt.replace(/\shours?/, 'h')
-            setPostedAt(formattedPostedAt)
-        }
-    }
+    const [postData, setPostData] = useState<PostDomProps>({...props, postedAt: 'now'})
 
     useEffect(() => {
-        getPostedAt()
+        const timeStamp = props.postedAt.toDate()
+        const result = formatDistanceToNowStrict(timeStamp)
+        let formattedPostedAt = 'now'
+
+        if (result.includes('day') || result.includes('month') || result.includes('year') ) {
+            if(result === '1 day') {
+                formattedPostedAt = '1d'
+            } else if (result.includes('year')) {
+                formattedPostedAt = format(timeStamp, 'LLL dd, yyyy')
+            } else {
+                formattedPostedAt = format(timeStamp, 'LLL dd')
+            }
+        } else {
+            if (!(result === '0 seconds' || result === '1 seconds')) {
+                formattedPostedAt = result.replace(/\sseconds?/, 's')
+                formattedPostedAt = formattedPostedAt.replace(/\sminutes?/, 'm')
+                formattedPostedAt = formattedPostedAt.replace(/\shours?/, 'h')
+            }
+        }
+
+        setPostData({...props, postedAt: formattedPostedAt})
     }, [])
 
     return (
