@@ -42,6 +42,10 @@ module.exports = {
             'body': ['0.9375rem', {
                 lineHeight: 1.2,
                 fontWeight: 400
+            }],
+            'default': ['1rem', {
+                lineHeight: 1.2,
+                fontWeight: 400,
             }]
         }
     },
